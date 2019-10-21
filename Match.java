@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 public class Match {
+	//rrr
     public static void main(String arg[]){
 		if (arg.length == 1 || arg.length == 2) {
 			try { // ファイル読み込みに失敗した時の例外処理のためのtry-catch構文
@@ -41,7 +42,7 @@ public class Match {
 				}else{
 					System.out.println(hashMaps.toString());
 				}
-				
+
 			} catch (IOException e) {
 				e.printStackTrace(); // 例外が発生した所までのスタックトレースを表示
 			}
