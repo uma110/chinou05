@@ -82,13 +82,7 @@ class Unifier {
     public boolean unify(String string1,String string2,HashMap<String,String> bindings,
     		ArrayList<HashMap<String, String>> hashMaps){
         this.vars.putAll(bindings);
-        if(unify(string1,string2)){
-        	if(!vars.isEmpty()){
-        		hashMaps.add(this.vars);
-        	}
-        	return true;
-        }
-        return false;
+        return unify(string1, string2,hashMaps);
     }
 
     public boolean unify(String string1,String	string2,HashMap<String, String> bindings){

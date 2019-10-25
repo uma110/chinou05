@@ -33,7 +33,7 @@ public class MatchOnGUI {
 	private JTextPane txtpnSearchData;
 	private JButton btnNewButton_2;
 	private JLabel lblPleaseWriteData;
-	private final Action SerchAct = new SwingAction();
+	private final Action SearchAct = new SwingAction();
 	private final Action AddDataAct = new SwingAction_1();
 	private final Action DeleteDataAct = new SwingAction_2();
 	private JButton btnNewButton_3;
@@ -105,7 +105,7 @@ public class MatchOnGUI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 800, 600);
+		frame.setBounds(100, 100, 900, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
@@ -154,7 +154,7 @@ public class MatchOnGUI {
 		frame.getContentPane().add(btnNewButton_1);
 
 		scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(456, 64, 314, 476);
+		scrollPane_1.setBounds(456, 64, 400, 476);
 		frame.getContentPane().add(scrollPane_1);
 
 		DataInfo = new JTextArea();
@@ -164,7 +164,7 @@ public class MatchOnGUI {
 
 		lblNewLabel = new JLabel("Data Infomation");
 		lblNewLabel.setFont(new Font("MS UI Gothic", Font.PLAIN, 19));
-		lblNewLabel.setBounds(458, 27, 202, 23);
+		lblNewLabel.setBounds(458, 27, 129, 23);
 		frame.getContentPane().add(lblNewLabel);
 
 		txtpnSearchData = new JTextPane();
@@ -176,14 +176,14 @@ public class MatchOnGUI {
 
 		btnNewButton_2 = new JButton("Search");
 		btnNewButton_2.setFont(new Font("MS UI Gothic", Font.PLAIN, 20));
-		btnNewButton_2.setAction(SerchAct);
+		btnNewButton_2.setAction(SearchAct);
 		btnNewButton_2.setBounds(299, 83, 129, 45);
 		frame.getContentPane().add(btnNewButton_2);
 		
 		btnNewButton_3 = new JButton("Update");
-		btnNewButton_3.setFont(new Font("MS UI Gothic", Font.PLAIN, 17));
+		btnNewButton_3.setFont(new Font("MS UI Gothic", Font.PLAIN, 18));
 		btnNewButton_3.setAction(DataUpdate);
-		btnNewButton_3.setBounds(625, 18, 113, 33);
+		btnNewButton_3.setBounds(616, 18, 129, 40);
 		frame.getContentPane().add(btnNewButton_3);
 	}
 	private class SwingAction extends AbstractAction {
@@ -201,7 +201,7 @@ public class MatchOnGUI {
 				return;
 			}
 			dataInfoUpdate();
-			displayResultOnGUI(MatchForGUI.Serch(searchDataStr));
+			displayResultOnGUI(MatchForGUI.Search(searchDataStr));
 		}
 	}
 	private class SwingAction_1 extends AbstractAction {

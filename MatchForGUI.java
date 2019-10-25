@@ -16,7 +16,7 @@ import java.util.Iterator;
 public class MatchForGUI {
 	public static final String datafileName = "data.txt";
 
-	public static String Serch(String searchData[]) {
+	public static String Search(String searchData[]) {
 		if (searchData.length == 1 || searchData.length == 2) {
 			try { // ファイル読み込みに失敗した時の例外処理のためのtry-catch構文
 				String fileName = datafileName; // ファイル名指定
@@ -97,7 +97,7 @@ public class MatchForGUI {
 					}
 					blankCount = 0;
 				}*/
-				
+
 				if(!line.equals(deleteData)) out.println(line);
 			}
 			out.close();

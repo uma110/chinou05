@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -15,13 +16,13 @@ import java.util.Scanner;
 
 public class Match {
 	public static final String datafileName = "database.txt";
-	public static void Serch(String arg[]) {
+	public static void Search(String arg[]) {
 		if (arg.length == 1 || arg.length == 2) {
 			try { // ファイル読み込みに失敗した時の例外処理のためのtry-catch構文
 				String fileName = datafileName; // ファイル名指定
 
 				// 文字コードUTF-8を指定してBufferedReaderオブジェクトを作る
-				BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "UTF-8"));
+				BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8));
 
 				ArrayList<HashMap<String, String>> hashMaps = new ArrayList<>();
 				// 変数lineに1行ずつ読み込むfor文
@@ -39,7 +40,7 @@ public class Match {
 					// 引数2つ目の処理を書く
 					for (Iterator<HashMap<String, String>> iterator = hashMaps.iterator(); iterator.hasNext();) {
 						HashMap<String, String> vars = (HashMap<String, String>) iterator.next();
-						in = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "UTF-8"));
+						in = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8));
 						// 変数lineに1行ずつ読み込むfor文
 						for (String line = in.readLine(); line != null; line = in.readLine()) {
 							System.out.println((new Unifier()).unify(arg[1], line, vars, ansHashMaps));
@@ -64,7 +65,7 @@ public class Match {
 		try{
 			String filename = datafileName;
 			PrintWriter out = new PrintWriter(
-					new OutputStreamWriter(new FileOutputStream(filename,true),"UTF-8"));
+					new OutputStreamWriter(new FileOutputStream(filename,true),StandardCharsets.UTF_8));
 			out.println();
 			while(true){
 				System.out.println("Write data|If you write 'end',Stop add data");
@@ -88,8 +89,8 @@ public class Match {
 		String filename = datafileName;
 		String tmpFilename = filename+"tmp";
 		try {
-			PrintWriter out = new PrintWriter(new OutputStreamWriter(new FileOutputStream(tmpFilename), "UTF-8"));
-			BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"));
+			PrintWriter out = new PrintWriter(new OutputStreamWriter(new FileOutputStream(tmpFilename), StandardCharsets.UTF_8));
+			BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(filename), StandardCharsets.UTF_8));
 			for (String line = in.readLine(); line != null; line = in.readLine()) {
 				if(!line.equals(deleteData)) {
 					System.out.println("**********");
@@ -120,14 +121,14 @@ public class Match {
 		Scanner stdin = new Scanner(System.in);
 		while (true) {
 			System.out.println("Choose your command");
-			System.out.println("1->Add 2->Serch 3->Delete 4->Quit");
+			System.out.println("1->Add 2->Search 3->Delete 4->Quit");
 			int command = stdin.nextInt();
 			switch (command) {
 			case 1:
 				Add();
 				break;
 			case 2:
-				Serch(arg);
+				Search(arg);
 				break;
 			case 3:
 				Delete();
