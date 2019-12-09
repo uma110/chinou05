@@ -248,6 +248,7 @@ public class SituationMaker {
 		g.fillPolygon(polygon);
 
 		g.setColor(Color.BLACK);
+		g.setStroke(new BasicStroke());
 		g.drawLine(triX[0], triY[0], triX[1], triY[1]);
 		g.drawLine(triX[1], triY[1], triX[2], triY[2]);
 		g.drawLine(triX[2], triY[2], triX[0], triY[0]);
@@ -282,6 +283,7 @@ public class SituationMaker {
 		g.setColor(c);
 		g.fill(ellipse2d);
 		g.setColor(Color.BLACK);
+		g.setStroke(new BasicStroke());
 		g.draw(ellipse2d);
 	}
 
@@ -313,6 +315,7 @@ public class SituationMaker {
 		g.setColor(c);
 		g.fill(rectangle2d);
 		g.setColor(Color.BLACK);
+		g.setStroke(new BasicStroke());
 		g.draw(rectangle2d);
 	}
 

@@ -67,7 +67,7 @@ public class Planner {
 		plan = new Vector();
 		planning(goalList, initialState, theBinding);
 
-		if (!infinityRoopSwitch)
+		if (infinityRoopSwitch)
 			return null;
 
 		String[] plans = new String[plan.size()];

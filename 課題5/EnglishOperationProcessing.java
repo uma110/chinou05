@@ -537,6 +537,7 @@ public class EnglishOperationProcessing {
 				return null;
 			}
 
+			System.out.println("gogogogo");
 			int underObjIndex = findIndexFromGoalList(underName, goalState);
 			if (underObjIndex != -1) {
 				System.out.println("upperObj add");
@@ -564,23 +565,29 @@ public class EnglishOperationProcessing {
 				System.out.println("infinity roop");
 				return null;
 			}
-			makeGoalStateForGUI(escapeElement, system,goalState);
+			makeGoalStateForGUI(escapeElement, system, goalState);
 		}
 		return new LinkedList<>(goalState);
 	}
 
 	private int findIndexFromGoalList(String feature, List<ObjectCharactor> list) {
 		if (list.isEmpty()) {
+			System.out.println("list is empty");
 			return -1;
 		}
 		int i;
 		for (i = list.size() - 1; i >= 0; i--) {
 			ObjectCharactor searchObj = list.get(i);
-			if (feature.equals("?")) {
+			System.out.println(searchObj);
+			if (searchObj.getSymbol().equals("?")) {
+				System.out.println("feature ->"+feature);
+				System.out.println("shape ->"+searchObj.getShape().getName());
+				System.out.println("color ->"+searchObj.getColor().toString());
 				if (feature.equals(searchObj.getShape().getName()) || feature.equals(searchObj.getColor().toString())) {
 					break;
 				}
 			} else {
+				System.out.println("ponpon");
 				if (feature.equals(searchObj.getSymbol())) {
 					break;
 				}
@@ -589,22 +596,18 @@ public class EnglishOperationProcessing {
 		return i;
 	}
 
-	private ObjectCharactor identifyObjFromSystem(String name, OperationSystem system) {
+	private ObjectCharactor identifyObjFromSystem(String feature, OperationSystem system) {
 		ObjectCharactor obj = null;
-		if (!name.equals("?")) {
+		if (ObjectCharactor.existSameSymbol(feature)) {
 			System.out.println("11");
-			if (ObjectCharactor.existSameSymbol(name)) {
-				System.out.println("22");
-				obj = system.findObjInSystem(name);
-				System.out.println(obj);
-			} else {
-				System.out.println("object name in this System is not exist");
-				obj = null;
-			}
-		} else {
-			System.out.println("33");
-			SupportedColor color = SupportedColor.getTagFromString(name);
-			SupportedShape shape = SupportedShape.getTagFromString(name);
+			obj = system.findObjInSystem(feature);
+			System.out.println(obj);
+		}
+
+		if (obj == null) {
+			System.out.println("22");
+			SupportedColor color = SupportedColor.getTagFromString(feature);
+			SupportedShape shape = SupportedShape.getTagFromString(feature);
 			if (color != null) {
 				obj = new ObjectCharactor("?", SupportedShape.None, color, false);
 			} else if (shape != null) {
@@ -676,7 +679,8 @@ public class EnglishOperationProcessing {
 			goalElementList.forEach(str -> {
 				logList.add(str);
 			});
-			LinkedList<ObjectCharactor> goalState = makeGoalStateForGUI(goalElementList, targetStateSystem,new LinkedList<ObjectCharactor>());
+			LinkedList<ObjectCharactor> goalState = makeGoalStateForGUI(goalElementList, targetStateSystem,
+					new LinkedList<ObjectCharactor>());
 			if (goalState == null) {
 				System.out.println("can not make goal state");
 				operationSuccess = false;
